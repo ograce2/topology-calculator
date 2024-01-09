@@ -1,9 +1,17 @@
+// The set X
 var X = [];
+
+// A collection of subsets X, to be determined if it is a topology on X
 var T = [];
+
 var stringsT = [];
+
+// An array that represents a subset of X. The element at index i is 1 if x_i is an element of the subset, 0 otherwise
 var set = [0, 0, 0 , 0, 0];
 
-// Function called when user inputs the size of X. Creates the array X.
+// This function is called when the user inputs the size of X. The array X is initialized and the elements of X
+// are displayed for the user. Onclick attributes are added to each element so that users can add them and 
+// remove them from subsets when creating the collection T.
 function chooseSize() {
     document.getElementById("sizeForm").addEventListener("submit", function (ev) {
         ev.preventDefault();
@@ -18,14 +26,14 @@ function chooseSize() {
             element.setAttribute("id", "element" + i);
             element.innerHTML = "x<sub>" + i + "</sub>";
 
-            // When an element of X is clicked, it is added to a set (this set may be added to T)
+            // When an element of X is clicked, it is added to the array set and displayed for the user to see
             element.onclick = function () {
                 let chosenElement = document.createElement("span");
                 chosenElement.setAttribute("id", "chosen" + i);
                 chosenElement.innerHTML = "x<sub>" + i + "</sub>";
                 set[i] = 1;
 
-                // When an element in the set is clicked, it is removed from the set
+                // When an element in the set is clicked, it is removed from the array, set
                 chosenElement.onclick = function(){
                     document.getElementById(this.id).remove();
                     let num = this.id[6];
@@ -49,8 +57,10 @@ function chooseSize() {
     });
 }
 
+// This function adds a subset of X to the collection T. It is called when the user clicks the button "Add to T"
+// The subset is displayed for the user to see
 function addToT(){
-    // let elementOfT = [];
+    
     let array = set;
 
     T.push(array);
@@ -78,7 +88,7 @@ function addToT(){
     console.log("Set: " + set);
 }
 
-// Determines if T contains X and the empty set (the first topology axiom)
+// Determines if T contains X and the empty set 
 function checkRule1(){
     console.log("T");
 
@@ -107,9 +117,14 @@ function checkRule1(){
     }
 }
 
+// String used to check rule 2
 var unionAnswer = "";
+
+// String used to check rule 3
 var interAnswer = "";
 
+
+// Determines if T is closed under finite intersections.
 function checkRule2(){
 
     unionAnswer = "";
@@ -123,6 +138,7 @@ function checkRule2(){
  
 }
 
+// Determines if T is closed under unions
 function checkRule3(){
 
     interAnswer = "";
@@ -136,6 +152,9 @@ function checkRule3(){
  
 }
 
+// Calculates all the possible unions between array and the elements of T from index num onward. 
+// array - an integer array containing 1s and 0s only
+// num - a nonnegative integer
 function calcSubsequentUnions(array, num){
 
     
@@ -154,6 +173,9 @@ function calcSubsequentUnions(array, num){
     
 }
 
+// Calculates all the possible intersections between array and the elements of T from index num onward
+// array - an integer array containing 1s and 0s only
+// num - a nonnegative integer
 function calcSubsequentIntersections(array, num){
 
     
@@ -174,7 +196,9 @@ function calcSubsequentIntersections(array, num){
 
 
 
-// Returns the binary intersection of two arrays
+// Returns the intersection of two arrays, where each array is made of 0s and 1s, where i = 1 if x_i is an element of
+// the array and x_i = 0 otherwise. Thus, the intersection of two arrays has a 1 at index i if both arrays have a 1
+// at index i, and 0 otherwise.
 function calcIntersection(arr1, arr2){
     let intersection = [];
     for (let i = 0; i < arr1.length; i++){
@@ -187,7 +211,9 @@ function calcIntersection(arr1, arr2){
     return intersection;
 }
 
-// Returns the binary union of two arrays
+// Returns the union of two arrays, where each array is made of 0s and 1s, where i = 1 if x_i is an element of
+// the array and x_i = 0 otherwise. Thus, the union of two arrays has a 1 at index i if either array has a 1
+// at index i, and 0 otherwise.
 function calcUnion(arr1, arr2){
     let union = []
     for (let i = 0; i < arr1.length; i++){
@@ -211,7 +237,7 @@ function isInT(arr){
     return false;
 }
 
-// Checks if T is a topology on X
+// Checks if T is a topology on X and prints to the console
 function checkTop(){
     
     console.log("rule 1: " + checkRule1());
