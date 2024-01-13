@@ -11,12 +11,18 @@
 
     <div id="container">
 
-        <div id="intro">
-            Let X be a set and let T be a subset of the power set of X.
+
+        <div id="header">
+            <h1>Topology Calculator</h1>
         </div>
 
+        <!-- <div id="intro">
+            Let X be a set and let T be a subset of the power set of X.
+        </div> -->
+
         <div id="chooseSize">
-            <p>Choose a size between 1 and 5 for the set X:</p>
+            <p id="sizeIntro">Let X be a set and let T be a collection of subsets of X. </p>
+            <p id="sizePrompt">Choose a size between 1 and 5 for the set X:</p>
             <form id="sizeForm">
                 <input type="number" max="5" min="1" id="sizeX"/>
                 <input type="submit" value="Enter Size" id="sizeBtn" />
@@ -24,11 +30,11 @@
         </div>
 
         <div id="chooseElements" style="display:none">
-            <p>These are the elements of the set X.</p>
+            <p id="elemsIntro">These are the elements of the set X.</p>
 
             <div id="elementsOfX"></div>
 
-            <p>Click on elements of x to form a subset. Once you have the desired subset, click "Add to T". 
+            <p>Click on elements of X to form a subset that you would like to add to T. Once you have the desired subset, click "Add to T". 
                The empty set is valid!
             </p>
 
@@ -42,13 +48,21 @@
                 T: { <span id="elementsOfT"></span> }
             </div>
 
-            <p>Once you have complete your set T, check if T is a topology on X!
+            <p id="checkPrompt">Once you have complete your set T, check if T is a topology on X!
              </p>
 
              <input type="button" id="checkTop" value="Check T" onclick="checkTop()"/>
 
+        </div>
+
+        <div id="results" style="display:none">
+            The set T : { <span id="elementsOfTResults"></span> } <span id="resultsText"></span>
+
+            <input type="button" id="calcAgain" value="Calculate Again" onclick="location.reload()"/>
 
         </div>
+
+        
 
     </div>
 

@@ -1,0 +1,90 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+
+#container{
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    
+}
+
+*{
+    font-family: gill, helvetica, sans-serif;
+  }
+
+#header{
+    height: 20vh;
+    background-color: #0f2337;
+    margin: 0px;
+    color: #ff8400;
+    font-size: 2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chooseSize{
+    height: 50vh; 
+    margin: 3%;
+    background-color: #ff8400;
+    border: 0.2em solid #0f2337;  
+    padding: 1%;
+
+    display: grid;
+    grid-template-areas: 
+    "sizeIntro"
+    "sizePrompt"
+    "sizeForm";
+    
+    justify-content: center;
+    text-align: center;
+
+    font-size: 2em;
+}
+
+#chooseElements{
+    height: 50vh; 
+    margin: 3%;
+    background-color: #ff8400;
+    border: 0.2em solid #0f2337;  
+    padding: 1%;
+
+    display: grid;
+    grid-template-areas: 
+    "elemsIntro"
+    "elementsOfX"
+    "chosenElements"
+    "addToT"
+    "checkPrompt"
+    "checkTop";
+    
+    justify-content: center;
+    text-align: center; 
+
+    font-size: 2em;
+}
+
+#results{
+    height: 50vh; 
+    margin: 3%;
+    background-color: #ff8400;
+    border: 0.2em solid #0f2337;  
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    font-size: 2em;
+}
+
+#sizeX{
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    font-size: 2em;
+}

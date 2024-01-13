@@ -49,7 +49,7 @@ function chooseSize() {
 
         console.log(X);
 
-        document.getElementById("chooseElements").style.display = "inline";
+        document.getElementById("chooseElements").style.display = "block";
 
         document.getElementById("chooseSize").style.display = "none";
 
@@ -66,18 +66,23 @@ function addToT(){
     T.push(array);
 
     let newSet = document.createElement("span");
-
+    let resultSet = document.createElement("span");
+    let resultSetContents = "{"
     let newSetContents = "{"
     for (let i = 0; i < 5; i++){
         if (set[i] == 1){
             newSetContents +="x<sub>" + i + "</sub>";
+            resultSetContents +="x<sub>" + i + "</sub>";
         }
     }
     newSetContents += "}";
+    resultSetContents += "}";
 
+    resultSet.innerHTML = resultSetContents;
     newSet.innerHTML = newSetContents;
 
     document.getElementById("elementsOfT").appendChild(newSet);
+    document.getElementById("elementsOfTResults").appendChild(resultSet);
 
     document.getElementById("chosenElements").innerHTML = "Set: ";
 
@@ -124,7 +129,7 @@ var unionAnswer = "";
 var interAnswer = "";
 
 
-// Determines if T is closed under finite intersections.
+// Determines if T is closed under unions.
 function checkRule2(){
 
     unionAnswer = "";
@@ -138,7 +143,7 @@ function checkRule2(){
  
 }
 
-// Determines if T is closed under unions
+// Determines if T is closed under finite intersections.
 function checkRule3(){
 
     interAnswer = "";
@@ -239,6 +244,27 @@ function isInT(arr){
 
 // Checks if T is a topology on X and prints to the console
 function checkTop(){
+
+    if (checkRule1() && checkRule2() && checkRule3()){
+        document.getElementById("resultsText").innerHTML = " is a topology on X </br></br>"
+    } else{
+        let message = " is not a topology on X because: </br></br>";
+        
+        if (!checkRule1()){
+            message += "T does not contain X or the empty set</br></br>";
+        }
+        if (!checkRule2()){
+            message += "T is not closed under unions</br></br>";
+        }
+        if (!checkRule3()){
+            message += "T is not closed under fintite intersections</br></br>";
+        }
+
+        document.getElementById("resultsText").innerHTML = message;
+    }
+
+    document.getElementById("chooseElements").style.display = "none";
+    document.getElementById("results").style.display = "block";
     
     console.log("rule 1: " + checkRule1());
     console.log("rule 2: " + checkRule2());
