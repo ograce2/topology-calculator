@@ -25,6 +25,7 @@ function chooseSize() {
             let element = document.createElement("span");
             element.setAttribute("id", "element" + i);
             element.innerHTML = "x<sub>" + i + "</sub>";
+            element.setAttribute("class", "elemBtn");
 
             // When an element of X is clicked, it is added to the array set and displayed for the user to see
             element.onclick = function () {
